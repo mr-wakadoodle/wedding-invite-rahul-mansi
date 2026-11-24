@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Invite card (render source)</title>
+<!-- Renders the WhatsApp image (card.html?portrait) and the link preview (card.html).
+     Regenerate with: node tools/render-cards.js (needs a local server on port 8765) -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500;1,600&family=Proza+Libre:wght@400;500;600&family=Noto+Serif+Devanagari:wght@500&display=swap">
+<style>
+  :root {
+    --primary: #002519; --green: #173B2D; --gold: #B5945B; --gold-soft: #E6C184;
+    --wash: #FFEED8; --rose: #8E5C5C; --secondary: #755A27; --on-wash: #422C00;
+    --bg: #FDF9F3; --bg-low: #F7F3ED; --white: #FFFFFF; --muted: #414844;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  html, body { width: 100%; height: 100%; }
+  body { background: var(--bg-low); font-family: "Proza Libre", sans-serif; color: var(--primary); }
+  .card { position: absolute; inset: 0; display: grid; place-items: center; overflow: hidden; }
+  .frame { position: absolute; inset: 2.6vh; border: 1px solid rgba(181,148,91,.45); }
+  .frame::after { content: ""; position: absolute; inset: 1vh; border: 1px solid rgba(181,148,91,.22); }
+
+  .arch {
+    position: relative; text-align: center;
+    width: 76%; padding: 7vh 6% 5vh;
+    background: var(--white);
+    border: 1px solid rgba(181,148,91,.6);
+    border-radius: 999px 999px 0 0;
+    display: grid; justify-items: center; gap: 1.6vh;
+  }
+  .crest { width: 13vh; height: 6.5vh; color: var(--gold); }
+  .deva { font-family: "Noto Serif Devanagari", serif; color: var(--secondary); font-size: 2.4vh; letter-spacing: .06em; }
+  .lede { font-family: "Cormorant", serif; font-style: italic; font-weight: 500; color: var(--muted); font-size: 2.9vh; line-height: 1.5; max-width: 30ch; }
+  h1 { font-family: "Cormorant", serif; font-weight: 600; font-size: 8.8vh; white-space: nowrap; line-height: 1; letter-spacing: -.01em; }
+  .full { color: var(--muted); font-size: 1.8vh; letter-spacing: .04em; }
+  .rule { width: 8vh; height: 1px; background: rgba(181,148,91,.7); }
+  .dates { font-family: "Cormorant", serif; font-weight: 600; font-size: 4.2vh; }
+  .place { color: var(--muted); font-size: 2.1vh; }
+  .pill { background: var(--wash); border: 1px solid rgba(181,148,91,.45); color: var(--on-wash); border-radius: 999px; padding: .7vh 2.2vh; font-size: 1.6vh; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; }
+  .fns { font-family: "Cormorant", serif; font-style: italic; font-weight: 500; color: var(--rose); font-size: 2.8vh; }
+  .cta { background: var(--primary); color: #fff; border-radius: 999px; padding: 1.6vh 4.5vh; font-weight: 600; font-size: 2vh; border: 1px solid rgba(181,148,91,.5); }
+
+  /* Landscape link preview */
+  body.land .arch { width: 58%; padding: 6vh 5% 4.5vh; gap: 1.8vh; }
+  body.land .crest { width: 16vh; height: 8vh; }
+  body.land .deva { font-size: 3.6vh; }
+  body.land .lede { font-size: 3vh; }
+  body.land h1 { font-size: 15.5vh; }
+  body.land .full, body.land .lede.small { font-size: 2.6vh; }
+  body.land .dates { font-size: 6vh; }
+  body.land .place { font-size: 3.2vh; }
+  body.land .frame { inset: 3.4vh; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="frame"></div>
+  <div class="arch">
+    <svg class="crest" viewBox="0 0 120 60" fill="none">
+      <path d="M12 46C28 24 44 14 60 14C76 14 92 24 108 46" stroke="currentColor" stroke-width="1.2" stroke-opacity="0.7"/>
+      <path d="M22 48C36 30 48 22 60 22C72 22 84 30 98 48" stroke="currentColor" stroke-width="0.9" stroke-opacity="0.45"/>
+      <circle cx="60" cy="14" r="3" fill="currentColor" fill-opacity="0.85"/>
+      <path d="M60 4C62.5 8 62.5 11 60 14C57.5 11 57.5 8 60 4Z" stroke="currentColor" stroke-width="1.1"/>
+      <path d="M51 11C55 11 57.5 12.5 59 14C55.5 15 53 14 51 11Z" stroke="currentColor"/>
+      <path d="M69 11C65 11 62.5 12.5 61 14C64.5 15 67 14 69 11Z" stroke="currentColor"/>
+      <circle cx="38" cy="24" r="1.75" fill="currentColor" fill-opacity="0.5"/>
+      <circle cx="82" cy="24" r="1.75" fill="currentColor" fill-opacity="0.5"/>
+      <circle cx="24" cy="36" r="1.5" fill="currentColor" fill-opacity="0.4"/>
+      <circle cx="96" cy="36" r="1.5" fill="currentColor" fill-opacity="0.4"/>
+    </svg>
+    <div class="deva" lang="hi">॥ शुभ विवाह ॥</div>
+    <p class="lede portrait-only">The Tandon and Gupta families request the pleasure of your company at the wedding of</p>
+    <h1>Rahul &amp; Mansi</h1>
+        <div class="rule"></div>
+    <div class="dates">13 &amp; 14 March 2027</div>
+    <div class="place">Shawn Elizey, Jabalpur, Madhya Pradesh</div>
+    <div class="fns portrait-only">Haldi · Sangeet · Varmala &amp; Pheras · Reception</div>
+    <div class="cta portrait-only">Kindly RSVP via the link</div>
+  </div>
+</div>
+<script>
+  if (!location.search.includes('portrait')) {
+    document.body.classList.add('land');
+    document.querySelectorAll('.portrait-only').forEach(function (n) { n.remove(); });
+  }
+</script>
+</body>
+</html>
